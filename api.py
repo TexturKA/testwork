@@ -63,7 +63,7 @@ def post_themes():
     name = None
     data = db.all()
     for item in data:
-        count = len(item)
+        count = len(item) - 1
         for i in item:
             if i == 'name':
                 continue
@@ -71,7 +71,8 @@ def post_themes():
                 count -= 1
             else:
                 break
-        if count == 2:
+        # print(item, count)
+        if count == 0:
             name = item['name']
             break
     if name is None:
